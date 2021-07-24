@@ -1,0 +1,30 @@
+<div class="myFormBody">
+    <div class="myformContainer">
+        <form>
+            <!-- Name: -->
+            <div>
+                <label>Name</label>
+                <input type="text" [(ngModel)]="name">
+            </div>
+            <!-- Email ID: -->
+            <div>
+                <label>Email ID</label>
+                <input type="text" [(ngModel)]="emailId">
+            </div>
+            <!-- No Of Passengers: -->
+            <div>
+                <label>Number OF Passengers</label>
+                <select [(ngModel)]="numberOfPassenger">
+                    <option value="1">1 Passengers</option>
+                    <option value="2">2 Passengers</option>
+                    <option value="3">3 Passengers</option>
+                </select>
+            </div>
+
+            <div *ngFor="let passenger of passengerDetails">
+                <h1>Hello</h1>
+            </div>
+
+        </form>
+    </div>
+</div>

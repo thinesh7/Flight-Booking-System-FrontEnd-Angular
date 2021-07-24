@@ -4,7 +4,7 @@ import { UsersRoutingModule } from './users-routing.module';
 import { BookingHistoryComponent } from './users-components/booking-history/booking-history.component';
 import { BookFlightComponent } from './users-components/book-flight/book-flight.component';
 import { ManageBookingsComponent } from './users-components/manage-bookings/manage-bookings.component';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsersMenubarComponent } from './users-components/users-menubar/users-menubar.component';
 import { UserDashboardComponent } from './users-components/user-dashboard/user-dashboard.component';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -13,6 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { SearchResultComponent } from './users-components/search-result/search-result.component';
+import { GetUserDetailsComponent } from './users-components/get-user-details/get-user-details.component';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     ManageBookingsComponent,
     UsersMenubarComponent,
     UserDashboardComponent,
+    SearchResultComponent,
+    GetUserDetailsComponent,
   ],
   imports: [CommonModule,UsersRoutingModule,ReactiveFormsModule,FormsModule,MatNativeDateModule,MatFormFieldModule,
     MatInputModule,MatRadioModule,MatSelectModule,MatAutocompleteModule]

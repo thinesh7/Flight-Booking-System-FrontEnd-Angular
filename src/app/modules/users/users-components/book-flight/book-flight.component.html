@@ -15,15 +15,30 @@
 
             <!--Drop Down 1-->
             <div class="place">
-                <mat-form-field>
-                    <mat-label>From</mat-label>
-                    <input matInput type="text" [matAutocomplete]="auto">
-                    <mat-autocomplete #auto="matAutocomplete">
-                        <mat-option *ngFor="let airport of listOfAirports" [value]="airport">
-                            {{airport}}
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
+                <span>
+                    <mat-form-field>
+                        <mat-label style="color: black; font-weight: bolder;" >From</mat-label>
+                        <input matInput type="text" [matAutocomplete]="auto" formControlName="sourcePlace" style="color: black; font-weight: bolder;">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let airport of listOfFilteredAirportsForSourcePlace" [value]="airport">
+                                {{airport}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </span>
+
+                <span>
+                    <mat-form-field>
+                        <mat-label style="color: black; font-weight: bolder;" >To</mat-label>
+                        <input matInput type="text" [matAutocomplete]="autoo" formControlName="destinationPlace" style="color: black; font-weight: bolder;" >
+                        <mat-autocomplete #autoo="matAutocomplete">
+                            <mat-option *ngFor="let airport of listOfFilteredAirportsForDestinationPlace" [value]="airport">
+                                {{airport}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </span>
+
             </div>
 
             <!-- calander -->

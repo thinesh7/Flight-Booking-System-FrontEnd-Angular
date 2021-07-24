@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { SearchDetails } from 'src/app/model/search-details.bean';
-import { map, startWith } from 'rxjs/operators';
 import { FlightServiceService } from 'src/app/service/flight-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-flight',
@@ -14,11 +13,12 @@ import { FlightServiceService } from 'src/app/service/flight-service.service';
 export class BookFlightComponent implements OnInit {
 
   //constructor
-  constructor(private formBuilder: FormBuilder, private flightService: FlightServiceService) {
+  constructor(private formBuilder: FormBuilder, private flightService: FlightServiceService, private router: Router) {
   }
 
   //Form builder
-  flightSearchForm: any;
+  flightSearchForm: FormGroup = new FormGroup({});
+
   //Form Controls:
   tType = new FormControl("", Validators.required);
   sPlace = new FormControl("", Validators.required);
@@ -26,11 +26,13 @@ export class BookFlightComponent implements OnInit {
   dDate = new FormControl("", Validators.required);
   rDate = new FormControl();
 
-  //DropDown List - List of AirPorts:
-  public listOfAirports: string[] = [];
+  //  List of AirPorts For Source Place:
+  public listOfAirportsForSourcePlace: string[] = [];
+  public listOfFilteredAirportsForSourcePlace: string[] = [];
 
-
-  filterOptions: Observable<string[]> = new Observable<string[]>();
+  // List of AirPorts:
+  public listOfAirportsForDestinationPlace: string[] = [];
+  public listOfFilteredAirportsForDestinationPlace: string[] = [];
 
   ngOnInit(): void {
     this.flightSearchForm = this.formBuilder.group({
@@ -41,28 +43,65 @@ export class BookFlightComponent implements OnInit {
       returnDate: this.rDate
     });
 
-    this.loadAirportList();
+    this.loadAirportListForSource();
+    this.autoCompCallForSource();
+
+    this.loadAirportListForDestination();
+    this.autoCompCallForDestination();
   }
 
-  mydata: any = [];
+  myTempData: any = [];
 
-  loadAirportList(): void {
+  loadAirportListForSource(): void {
     this.flightService.getAllAirportList().subscribe(data => {
-      console.log(data);
-      this.mydata = data;
+      this.myTempData = data;
       this.loopIt();
     });
   }
 
   loopIt() {
-    console.log(this.mydata)
-    for (let entry of this.mydata) {
-      this.listOfAirports.push(entry.name);
+    for (let entry of this.myTempData) {
+      this.listOfAirportsForSourcePlace.push(entry.name);
     }
-
-    console.log( this.listOfAirports);
+    this.listOfFilteredAirportsForSourcePlace = this.listOfAirportsForSourcePlace;
   }
 
+  private autoCompCallForSource() {
+    this.flightSearchForm.get('sourcePlace')?.valueChanges.subscribe(enteredData => this.filterData(enteredData));
+  }
+
+  private filterData(enteredData: string) {
+    this.listOfFilteredAirportsForSourcePlace = this.listOfAirportsForSourcePlace.filter(item => {
+      return item.toLowerCase().indexOf(enteredData.toLowerCase()) > -1
+    })
+  }
+
+  myTempData2: any = [];
+
+  //Destination Logic:
+  loadAirportListForDestination() {
+    this.flightService.getAllAirportList().subscribe(data => {
+      this.myTempData2 = data;
+      this.loopIt2();
+    });
+  }
+
+  loopIt2() {
+    for (let entry of this.myTempData2) {
+      this.listOfAirportsForDestinationPlace.push(entry.name);
+    }
+    this.listOfFilteredAirportsForDestinationPlace = this.listOfAirportsForDestinationPlace;
+  }
+
+  private autoCompCallForDestination() {
+    this.flightSearchForm.get('destinationPlace')?.valueChanges.subscribe(enter => { this.filterData2(enter) });
+  }
+
+  private filterData2(enter: string) {
+    this.listOfFilteredAirportsForDestinationPlace = this.listOfAirportsForDestinationPlace.filter(item => {
+      return item.toLowerCase().indexOf(enter.toLowerCase()) > -1;
+    })
+  }
 
   restForm() {
     this.flightSearchForm.reset();
@@ -70,14 +109,17 @@ export class BookFlightComponent implements OnInit {
 
   sendData() {
     let searchDeatils: SearchDetails = this.flightSearchForm.value;
-    console.log(searchDeatils);
 
-    //Send this to Server:
-
+    //Send this to Server and get:
+    localStorage.setItem("tType", searchDeatils.tripType);
+    localStorage.setItem("sPlace", searchDeatils.sourcePlace);
+    localStorage.setItem("dPlace", searchDeatils.destinationPlace);
+    localStorage.setItem("dDate", searchDeatils.departureDate);
+    if (!!searchDeatils.returnDate) {
+      localStorage.setItem("rDate", searchDeatils.returnDate);
+    }
     //Redirect to 
-
-
+    this.router.navigate(['dashboard/search-result']);
   }
-
 
 }

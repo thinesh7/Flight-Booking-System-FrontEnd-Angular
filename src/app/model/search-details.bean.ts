@@ -3,7 +3,7 @@ export class SearchDetails {
     tripType: string = ""; 
     sourcePlace: string = "";
     destinationPlace: string = "";
-    departureDate:String = "";
+    departureDate:string = "";
     returnDate?: string = "";
 
     constructor() {    }
