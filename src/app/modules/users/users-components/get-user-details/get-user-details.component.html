@@ -1,30 +1,71 @@
 <div class="myFormBody">
     <div class="myformContainer">
-        <form>
+        <form [formGroup]="getDetailsForm" (ngSubmit)="submitForm()">
             <!-- Name: -->
-            <div>
+            <div style="margin-top: 0px;">
                 <label>Name</label>
-                <input type="text" [(ngModel)]="name">
+                <input type="text" formControlName="name">
             </div>
             <!-- Email ID: -->
             <div>
                 <label>Email ID</label>
-                <input type="text" [(ngModel)]="emailId">
-            </div>
-            <!-- No Of Passengers: -->
-            <div>
-                <label>Number OF Passengers</label>
-                <select [(ngModel)]="numberOfPassenger">
-                    <option value="1">1 Passengers</option>
-                    <option value="2">2 Passengers</option>
-                    <option value="3">3 Passengers</option>
-                </select>
+                <input type="text" formControlName="email">
             </div>
 
-            <div *ngFor="let passenger of passengerDetails">
-                <h1>Hello</h1>
+            <button type="button"
+                style="margin-left: 60%; padding: 5px; background-color: #0061A8; color: white; border-radius: 5px 5px; border: 1px solid black;">Add
+                Passenger
+            </button>
+
+            <div formArrayName="passengersList">
+                <div class="row passenger" *ngFor="let pasngr of getPassenegrArray().controls; let i=index;">
+                    <div [formGroupName]="i">
+                        <label> Passenger Name</label>
+                        <input class="move" type="text" formControlName="pName">
+
+                        <label class="move">Gender</label>
+                        <select class="move" formControlName="pGender">
+                            <option value="Male"> Male </option>
+                            <option value="Female">Female</option>
+                        </select>
+
+                        <label class="move">Age</label>
+                        <input type="number" max="100" min="2" formControlName="age">
+
+                        <label class="move">Select Seat For Onward Journey</label>
+                        <select class="move" formControlName="onwardSeat">
+                            <option value="3B">3B</option>
+                            <option value="4B">4B</option>
+                            <option value="5B">5B</option>
+                        </select>
+
+                        <span *ngIf="!!returnDate">
+                            <label class="move">Select Seat For Return Journey</label>
+                            <select class="move" formControlName="returnSeat">
+                                <option value="7B">7B</option>
+                                <option value="8B">8B</option>
+                                <option value="8B">8B</option>
+                            </select>
+                        </span>
+
+                        <label class="move">Opt Meal</label>
+                        <select class="move" formControlName="optMeal">
+                            <option value="Veg">Veg</option>
+                            <option value="Non Veg">Non Veg</option>
+                        </select>
+
+                        <button type="button" class="move">Remove Passenger</button>
+                    </div>
+                </div>
             </div>
 
+            <div style="margin-top: 4px;">
+                <label>Discount</label>
+                <input type="text" formControlName="discount">
+                <button type="button">Apply</button>
+            </div>
+
+            <button type="submit" class="btn btn-info subColor">Submit</button>
         </form>
     </div>
 </div>

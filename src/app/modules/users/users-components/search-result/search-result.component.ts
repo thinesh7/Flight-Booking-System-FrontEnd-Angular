@@ -80,7 +80,6 @@ export class SearchResultComponent implements OnInit {
 
   //Submit:
   submit(){
-    confirm("Okay?");
     var billing = this.total1+this.total2;
     localStorage.setItem("billing",billing+'');
     this.router.navigate(["dashboard/enter-details"]);

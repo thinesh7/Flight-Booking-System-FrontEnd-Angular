@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { SearchResultComponent } from './users-components/search-result/search-result.component';
 import { GetUserDetailsComponent } from './users-components/get-user-details/get-user-details.component';
+import { GetPassengersDetailsComponent } from './users-components/get-passengers-details/get-passengers-details.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { GetUserDetailsComponent } from './users-components/get-user-details/get
     UserDashboardComponent,
     SearchResultComponent,
     GetUserDetailsComponent,
+    GetPassengersDetailsComponent,
   ],
   imports: [CommonModule,UsersRoutingModule,ReactiveFormsModule,FormsModule,MatNativeDateModule,MatFormFieldModule,
     MatInputModule,MatRadioModule,MatSelectModule,MatAutocompleteModule]

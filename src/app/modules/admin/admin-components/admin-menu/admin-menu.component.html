@@ -2,9 +2,11 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav innerNavBar">
-            <a class="nav-item nav-link active" routerLink="searchFlight">A<span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" routerLink="#">Manage Bookings</a>
-            <a class="nav-item nav-link" routerLink="#">Booking History</a>
+            <a class="nav-item nav-link active" routerLink="add-airline">Add Airline<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" routerLink="#">Manage Schedules</a>
+            <a class="nav-item nav-link" routerLink="#">Manage Discounts</a>
+            <a class="nav-item nav-link" routerLink="#">Manage Airlines</a>
+            <a class="nav-item nav-link" (click)="logout()" > LogOut </a>
           </div>
         </div>
       </nav>

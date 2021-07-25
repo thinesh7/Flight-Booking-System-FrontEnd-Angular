@@ -1,13 +1,30 @@
 .myformContainer{
     box-shadow: 5px 10px 20px blue;
         border: 1px solid black;
-        padding: 30px;
+        padding: 20px;
 }
 
 .myFormBody {
     position: relative;
-    top: 10%;
-    margin-left: 20%;
-    margin-right: 20%;
+    top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
     text-align: center;
+}
+.passenger{
+  border: 1px solid black; 
+  padding: 5px;
+  background-color: #77ACF1;
+  margin-top: 4px;
+}
+.move{
+    margin-left: 5px;
+    padding: 3px;
+}
+.subColor{
+    background-color: #0061A8;
+    margin-top: 4px;
+    border-radius: 10px 10px;
+    color: white;
+    box-shadow: 10px 20px 50px blue;
 }
