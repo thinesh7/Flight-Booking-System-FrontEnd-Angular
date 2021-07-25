@@ -1,31 +1,31 @@
 <div class="myFormBody">
     <div class="myformContainer">
-        <h3>Add New AirLine</h3>
-
+        <h3 style="text-align: center; font-size: x-large" >Add New AirLine</h3>
         <h2 *ngIf="isAdded" style="color: green; font-weight: bolder; font-size: larger; padding: 10px;" >New Flight Successfully Added</h2>
 
         <form [formGroup]="addAirlineForm" (ngSubmit)="submitAddFlight()">
             <!--AirLine Name-->
-            <div>
-                <label>AirLine Name</label>
+            <div class="element">
+                <label style="padding-right: 10px;">AirLine Name</label>
                 <input type="text" formControlName="airlineName" >
             </div>
             <!--Upload Logo-->
-            <div>
-                <label>UpLoad Airline Logo</label>
+            <div class="element">
+                <label style="float: left; margin-left: 23%; padding-right: 10px;">UpLoad Airline Logo</label>
                 <input type="file">
             </div>
             <!--Contact Number-->
-            <div>
-                <label>Contact Number</label>
+            <div class="element">
+                <label style="padding-right: 10px;">Contact Number</label>
                 <input type="text" formControlName="airLineContactNumber">
             </div>
             <!--Contact Address-->
-            <div>
-                <label>Contact Address</label>
-                <textarea formControlName="airLineContactAddress" ></textarea>
+            <div class="element" style="padding-bottom: 10px;">
+                <label style="padding-right: 10px;">Contact Address</label>
+                <textarea formControlName="airLineContactAddress" style="position: relative; top: 20px; margin-left: 10px;" ></textarea>
             </div>
-            <button type="submit">Add-Flight</button>
+            <br>
+            <button type="submit" class="btn btn-info subColor">Submit</button>
         </form>
     </div>
 </div>

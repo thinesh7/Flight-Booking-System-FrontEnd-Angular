@@ -15,8 +15,8 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { SearchResultComponent } from './users-components/search-result/search-result.component';
 import { GetUserDetailsComponent } from './users-components/get-user-details/get-user-details.component';
-import { GetPassengersDetailsComponent } from './users-components/get-passengers-details/get-passengers-details.component';
-
+import { PaymentGatewayComponent } from './users-components/payment-gateway/payment-gateway.component';
+import { PaymentSuccessComponent } from './users-components/payment-success/payment-success.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { GetPassengersDetailsComponent } from './users-components/get-passengers
     UserDashboardComponent,
     SearchResultComponent,
     GetUserDetailsComponent,
-    GetPassengersDetailsComponent,
+    PaymentGatewayComponent,
+    PaymentSuccessComponent,
   ],
   imports: [CommonModule,UsersRoutingModule,ReactiveFormsModule,FormsModule,MatNativeDateModule,MatFormFieldModule,
     MatInputModule,MatRadioModule,MatSelectModule,MatAutocompleteModule]

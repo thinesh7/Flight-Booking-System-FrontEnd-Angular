@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginDetail } from 'src/app/model/login-details';
 import { FlightServiceService } from 'src/app/service/flight-service.service';
-import { LoginServiceService } from 'src/app/service/login-service.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -14,12 +12,14 @@ export class AdminLoginComponent implements OnInit {
 
   //Form Grroup:
   loginFormGroup: FormGroup = new FormGroup({});
+  //Login Check:
+  isLoginFail:boolean = false;
 
   //Controlls:
-  emailid = new FormControl("Thines@cts.com", Validators.required);
+  emailid = new FormControl("Thines@cts.com",[Validators.required, Validators.pattern("([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9])+\.)+([a-zA-Z]{2,4})")]);
   pswd = new FormControl("thinesh", Validators.required);
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginServiceService, private fservice: FlightServiceService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private fservice: FlightServiceService) { }
 
   ngOnInit(): void {
     this.initializationFromBuilder();
@@ -41,20 +41,23 @@ export class AdminLoginComponent implements OnInit {
 
   doGeLoginDetails() {
     // Send data to server and validation login details:
-    this.fservice.getLoginDetail().subscribe(data => {
+      this.fservice.getLoginDetail().subscribe(data => {
       this.loginDetails = data;
       this.ValidateLoginDetails();
-      this.forwardRequestToNextPage();
+      
     });
   }
 
   ValidateLoginDetails() {
     if ((this.loginFormGroup.value.emailId == this.loginDetails[0].email) && (this.loginFormGroup.value.password == this.loginDetails[0].password)) {
       localStorage.setItem("isValid", "true");
+      this.forwardRequestToNextPage();
+    }else{
+      this.isLoginFail = true;
     }
   }
 
   forwardRequestToNextPage() {
-    this.router.navigate(["dashboard/add-airline"]);
+    this.router.navigate(["admin/dashboard/add-airline"]);
   }
 }

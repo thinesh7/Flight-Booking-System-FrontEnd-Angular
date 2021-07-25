@@ -54,7 +54,7 @@
                     <input type="date" class="calanderdes" formControlName="returnDate">
                 </span>
             </div>  <!--[disabled]="flightSearchForm.invalid"-->
-            <button type="submit" class="btn btn-info subColor" >Submit</button>
+            <button type="submit" class="btn btn-info subColor" [disabled]="flightSearchForm.invalid">Submit</button>
             <button type="button" class="btn btn-info subColor" (click)="restForm()">Reset</button>
         </form>
     </div>

@@ -7,10 +7,11 @@
                 {{searchDetails.sourcePlace}}</span>
             <span
                 style="color: black; font-weight: bolder;font-size: medium; margin-left: 25px; padding-bottom: 4px;">Destination:
-                {{searchDetails.destinationPlace}}</span>
-
+                {{searchDetails.destinationPlace}}
+            </span>
+            <br><br>
             <a *ngFor="let trip1 of oneWaySR" class="inner" (click)="flightTrip1Selected(trip1)">
-                <table style="text-align: center;" [class.highlighter]="selectedTrip1.flightId == trip1.flightId">
+                <table style="text-align: center; padding: 10px;" [class.highlighter]="selectedTrip1.flightId == trip1.flightId">
                     <tr style="position: relative">
                         <td><img [src]="trip1.logoUrl" width="40px" height="40px"></td>
                         <td><span>{{trip1.airlineName}}</span></td>
@@ -30,9 +31,9 @@
                 <span
                     style="color: black; font-weight: bolder;font-size: medium; margin-left: 25px;padding-bottom: 4px;">Destination:
                     {{searchDetails.sourcePlace}}</span>
-
+                <br> <br>
                 <a *ngFor="let trip2 of roundTrip" class="inner" (click)="flightTrip2Selected(trip2)">
-                    <table style="text-align: center;" [class.highlighter]="selectedTrip2.flightId == trip2.flightId">
+                    <table style="text-align: center;padding: 6px" [class.highlighter]="selectedTrip2.flightId == trip2.flightId">
                         <tr>
                             <td><img [src]="trip2.logoUrl" width="40px" height="40px"></td>
                             <td><span>{{trip2.airlineName}}</span></td>

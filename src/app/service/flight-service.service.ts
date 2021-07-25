@@ -8,6 +8,8 @@ import { SearchResult } from '../model/flight-search-result';
 })
 export class FlightServiceService {
 
+  pnrNumber:string = '';
+
   constructor(private http: HttpClient) { }
 
   public url: string = "http://localhost:3000";
@@ -35,4 +37,8 @@ export class FlightServiceService {
     return this.http.post(this.url+"/flights-list", flightDetails);
   }
 
+  //Send booking Details:
+  sendTicketBookingDetails(ticket:any){
+    return this.http.post(this.url+"/tickets",ticket);
+  }
 }

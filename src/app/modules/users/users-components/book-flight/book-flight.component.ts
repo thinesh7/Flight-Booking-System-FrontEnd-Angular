@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { SearchDetails } from 'src/app/model/search-details.bean';
 import { FlightServiceService } from 'src/app/service/flight-service.service';
 import { Router } from '@angular/router';
+import { Ticket } from 'src/app/service/ticket';
 
 @Component({
   selector: 'app-book-flight',
@@ -13,7 +14,8 @@ import { Router } from '@angular/router';
 export class BookFlightComponent implements OnInit {
 
   //constructor
-  constructor(private formBuilder: FormBuilder, private flightService: FlightServiceService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private flightService: FlightServiceService, private router: Router,
+    private tservice: Ticket) {
   }
 
   //Form builder
@@ -105,19 +107,16 @@ export class BookFlightComponent implements OnInit {
 
   restForm() {
     this.flightSearchForm.reset();
+    this.listOfFilteredAirportsForSourcePlace = this.listOfAirportsForSourcePlace;
+    this.listOfFilteredAirportsForDestinationPlace = this.listOfAirportsForDestinationPlace;
   }
 
   sendData() {
     let searchDeatils: SearchDetails = this.flightSearchForm.value;
 
-    //Send this to Server and get:
-    localStorage.setItem("tType", searchDeatils.tripType);
-    localStorage.setItem("sPlace", searchDeatils.sourcePlace);
-    localStorage.setItem("dPlace", searchDeatils.destinationPlace);
-    localStorage.setItem("dDate", searchDeatils.departureDate);
-    if (!!searchDeatils.returnDate) {
-      localStorage.setItem("rDate", searchDeatils.returnDate);
-    }
+    //Send this to Server and get Search Result:
+    this.tservice.searchDetails = searchDeatils;
+
     //Redirect to 
     this.router.navigate(['dashboard/search-result']);
   }

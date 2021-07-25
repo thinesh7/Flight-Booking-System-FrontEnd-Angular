@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { SearchResult } from 'src/app/model/flight-search-result';
 import { SearchDetails } from 'src/app/model/search-details.bean';
 import { FlightServiceService } from 'src/app/service/flight-service.service';
+import { Ticket } from 'src/app/service/ticket';
 
 @Component({
   selector: 'app-search-result',
@@ -16,7 +17,7 @@ export class SearchResultComponent implements OnInit {
   roundTrip: SearchResult[] = [];
   isRoundTrip: boolean = false;
 
-  constructor(private flightService: FlightServiceService, private router:Router) { }
+  constructor(private flightService: FlightServiceService, private router:Router, private tservice:Ticket) { }
 
   //Search Details:
   searchDetails: SearchDetails = new SearchDetails();
@@ -35,13 +36,12 @@ export class SearchResultComponent implements OnInit {
   //Loading Search Details:
   loadSearchDetails(): void {
     this.searchDetails = {
-      tripType: localStorage.getItem("tType") + '',
-      sourcePlace: localStorage.getItem("sPlace") + '',
-      destinationPlace: localStorage.getItem("dPlace") + '',
-      departureDate: localStorage.getItem("dDate") + '',
-      returnDate: localStorage.getItem("rDate") + ''
+      tripType: this.tservice.searchDetails.tripType,
+      sourcePlace: this.tservice.searchDetails.sourcePlace,
+      destinationPlace: this.tservice.searchDetails.destinationPlace,
+      departureDate: this.tservice.searchDetails.departureDate,
+      returnDate: this.tservice.searchDetails.returnDate
     }
-    console.log(this.searchDetails);
   }
 
   //Do API Calls:
@@ -53,7 +53,7 @@ export class SearchResultComponent implements OnInit {
   }
   getSearchResultForReturnTrip() {
     this.flightService.getSearchResultForRoundTrip().subscribe(data => {
-      this.roundTrip = data; console.log(data);
+      this.roundTrip = data;
     });
   }
 
@@ -81,7 +81,11 @@ export class SearchResultComponent implements OnInit {
   //Submit:
   submit(){
     var billing = this.total1+this.total2;
-    localStorage.setItem("billing",billing+'');
+    this.tservice.searchBillAmount = billing;
+    this.tservice.selectedFlightDetailsOnward = this.selectedTrip1;
+    if(!!this.flightTrip2Selected){
+      this.tservice.selectedFlightDetailsRound = this.selectedTrip2;
+    }
     this.router.navigate(["dashboard/enter-details"]);
   }
 

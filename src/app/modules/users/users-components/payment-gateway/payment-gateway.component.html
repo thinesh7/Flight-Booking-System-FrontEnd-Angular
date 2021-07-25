@@ -1,0 +1,38 @@
+<div class="myFormBody">
+    <div class="myformContainer">
+        <div class="element" >
+            <label>Name :</label> {{ticketInfo.name}}
+        </div>
+        <div  class="element">
+            <label>Email Id :</label> {{ticketInfo.email}}
+        </div>
+        <div class="element" >
+            <label>Number Of Passengers :</label>  {{ticketInfo.passengersList.length}}
+        </div>
+        <div *ngFor="let pass of getPassengerList(); let i=index" >
+            <div class="element">
+                <label>Passenger Name :</label> {{pass.pName}}
+            </div>
+            <div class="element">
+                <label>Passenger Age :</label> {{pass.age}}
+            </div>
+        </div>
+
+        <div class="element">
+            <label>Trip Type</label> {{tripType}}
+        </div>
+        <div class="element">
+            Amount to be pay: <span style="color: red; font-size: large;" >{{ticketInfo.billingAmmount}}&nbsp;INR </span>
+        </div>
+        <div class="element">
+            <label>Enter Card Details</label>
+            <input type="text" placeholder="XXXX-XXXX-XXXX-XXXX"> <br>
+            <label>Enter CVV</label>
+            <input type="text" placeholder="XXX">
+            <label>Enter Expire Date</label>
+            <input type="text" placeholder="MM/YY">
+        </div>
+        <br>
+        <button type="button" class="btn btn-info subColor" (click)="payment()">Click Here to Pay the Amount {{ticketInfo.billingAmmount}} &nbsp; INR </button>
+    </div>
+</div>

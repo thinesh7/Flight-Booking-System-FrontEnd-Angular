@@ -11,7 +11,6 @@ export class AddAirlineComponent implements OnInit {
 
   // Form Group:
   addAirlineForm: FormGroup = new FormGroup({});
-
   isAdded:boolean = false;
 
   constructor(private formBuilder: FormBuilder, private fservice:FlightServiceService) { }

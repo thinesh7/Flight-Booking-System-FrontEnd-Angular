@@ -3,16 +3,16 @@
         <form [formGroup]="getDetailsForm" (ngSubmit)="submitForm()">
             <!-- Name: -->
             <div style="margin-top: 0px;">
-                <label>Name</label>
-                <input type="text" formControlName="name">
+                <label>Name &nbsp;</label>
+                <input type="text" formControlName="name" style="margin-left: 10px;">
             </div>
             <!-- Email ID: -->
-            <div>
+            <div style="margin-top: 3px;">
                 <label>Email ID</label>
-                <input type="text" formControlName="email">
+                <input type="text" formControlName="email" style="margin-left: 10px;">
             </div>
 
-            <button type="button"
+            <button type="button" (click)="addPassenger()"
                 style="margin-left: 60%; padding: 5px; background-color: #0061A8; color: white; border-radius: 5px 5px; border: 1px solid black;">Add
                 Passenger
             </button>
@@ -54,18 +54,26 @@
                             <option value="Non Veg">Non Veg</option>
                         </select>
 
-                        <button type="button" class="move">Remove Passenger</button>
+                        <button type="button" class="move" (click)="removePassenger(i)">Remove Passenger</button>
                     </div>
                 </div>
             </div>
 
-            <div style="margin-top: 4px;">
-                <label>Discount</label>
-                <input type="text" formControlName="discount">
-                <button type="button">Apply</button>
-            </div>
+            <button type="button" class="btn btn-info subColor" (click)="calculatePrice()">Calculate Price</button>
+            <br>
+            <div *ngIf="showCalculate">
 
-            <button type="submit" class="btn btn-info subColor">Submit</button>
+                <p style="margin-top: 20px; margin-left: 2%; color: black; font-weight: bolder;font-size: larger;">
+                    Total Price:
+                    &nbsp; {{this.getDetailsForm.value.billingAmmount}} INR
+                </p>
+                <div style="margin-top: 10px;">
+                    <label>Discount</label>
+                    <input type="text" formControlName="discount" #discount>
+                    <button type="button" class="btn btn-info subColor" style="margin-left:30px px; margin-bottom: 2px;">Apply</button>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-info subColor">Check Out</button>
         </form>
     </div>
 </div>
