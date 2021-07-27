@@ -22,10 +22,10 @@ export class AddAirlineComponent implements OnInit {
   initializeForm() {
     this.addAirlineForm = this.formBuilder.group({
       //Form Control:
-      airlineName: new FormControl("AAA - Airline Pvt Ltd", Validators.required),
+      airlineName: new FormControl("", Validators.required),
       //airlineLogo: new FormControl(Validators.required),
-      airLineContactNumber: new FormControl('9876543210', Validators.required),
-      airLineContactAddress: new FormControl("Bangalore - 560066", Validators.required)
+      airLineContactNumber: new FormControl('', Validators.required),
+      airLineContactAddress: new FormControl("", Validators.required)
     });
   }
 
@@ -33,6 +33,7 @@ export class AddAirlineComponent implements OnInit {
   submitAddFlight(){
     this.fservice.addNewFlight(this.addAirlineForm.value).subscribe(data => console.log(data));
     this.isAdded = true;
+    this.addAirlineForm.reset();
   }
 
 }

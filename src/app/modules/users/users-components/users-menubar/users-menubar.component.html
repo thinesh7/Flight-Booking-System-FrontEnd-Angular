@@ -3,8 +3,9 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav innerNavBar">
             <a class="nav-item nav-link active" routerLink="searchFlight">Book Flight <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" routerLink="manage-booking">Manage Bookings</a>
             <a class="nav-item nav-link" routerLink="booking-history">Booking History</a>
+            <a class="nav-item nav-link" routerLink="manage-booking">Manage Bookings</a>
+            <a class="nav-item nav-link" (click)="logout()">LogOut</a>
           </div>
         </div>
       </nav>

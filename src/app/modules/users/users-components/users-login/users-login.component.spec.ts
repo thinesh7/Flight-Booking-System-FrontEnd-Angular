@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddNewFlightComponent } from './add-new-flight.component';
+import { UsersLoginComponent } from './users-login.component';
 
-describe('AddNewFlightComponent', () => {
-  let component: AddNewFlightComponent;
-  let fixture: ComponentFixture<AddNewFlightComponent>;
+describe('UsersLoginComponent', () => {
+  let component: UsersLoginComponent;
+  let fixture: ComponentFixture<UsersLoginComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddNewFlightComponent ]
+      declarations: [ UsersLoginComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddNewFlightComponent);
+    fixture = TestBed.createComponent(UsersLoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

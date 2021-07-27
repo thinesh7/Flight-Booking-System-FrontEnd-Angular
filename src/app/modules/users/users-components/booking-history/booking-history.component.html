@@ -1,5 +1,42 @@
 <div class="myFormBody">
     <div class="myformContainer">
-        <h1>Under Construction</h1>
+        <div>
+            <label style="padding-left: 10px;">Please Enter Email ID</label>
+            <input type="text" placeholder="Enter Booking EmailId" style="margin-left: 10px;">
+            <button type="button" (click)="getBookingHistory()" class="btn btn-info subColor"
+                style="margin-left: 10px;">Submit</button>
+        </div>
+
+        <div *ngIf="!!ticketHistory" class="row" style="margin-top: 10px;">
+            <label style="color: red;" >On Ward Trip</label>
+            <div *ngFor="let ticket of ticketHistory; let i=index" style="padding: 5px;">
+                <label>Flight Number :</label> {{ticket.onwardFlightID}}
+
+                <label>Boarding Date :</label> {{ticket.onwardBoardingTime}}
+
+                <label>Trip :</label>From {{ticket.onwardSource}} <label>To :</label> {{ticket.onwardDepature}}
+
+                <label>No Of Passengers :</label> {{ticket.passengersList.length}}
+
+                <button type="button" class="btn btn-info subColor" style="margin-left: 2px;">Download</button>
+            </div>
+            <label style="color: red;">Round Trip</label>
+            <div *ngIf="isRoundTrip">
+
+                <div *ngFor="let ticket of ticketHistory; let i=index" style="padding: 5px;">
+                    <div *ngIf="!!ticket.roundFlightId">
+                        <label>Flight Number :</label> {{ticket.roundFlightId}}
+
+                        <label>Boarding Date :</label> {{ticket.returnBoardingTime}}
+
+                        <label>Trip :</label>From {{ticket.roundSource}} <label>To :</label> {{ticket.roundDepature}}
+
+                        <label>No Of Passengers :</label> {{ticket.passengersList.length}}
+                        <button type="button" class="btn btn-info subColor" style="margin-left: 2px;">Download</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

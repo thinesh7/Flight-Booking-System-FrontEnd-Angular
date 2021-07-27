@@ -81,10 +81,12 @@ export class SearchResultComponent implements OnInit {
   //Submit:
   submit(){
     var billing = this.total1+this.total2;
-    this.tservice.searchBillAmount = billing;
+    this.tservice.searchBillAmount.totalBillingAmountBeforeIncludingPassenger = billing;
+    this.tservice.searchBillAmount.tripOnePrice = +this.selectedTrip1.price;
     this.tservice.selectedFlightDetailsOnward = this.selectedTrip1;
     if(!!this.flightTrip2Selected){
       this.tservice.selectedFlightDetailsRound = this.selectedTrip2;
+      this.tservice.searchBillAmount.tripTwoPrice = +this.selectedTrip2.price;
     }
     this.router.navigate(["dashboard/enter-details"]);
   }

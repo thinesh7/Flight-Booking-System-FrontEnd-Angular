@@ -7,7 +7,7 @@
             <!--AirLine Name-->
             <div class="element">
                 <label style="padding-right: 10px;">AirLine Name</label>
-                <input type="text" formControlName="airlineName" >
+                <input type="text" formControlName="airlineName">
             </div>
             <!--Upload Logo-->
             <div class="element">
@@ -25,7 +25,7 @@
                 <textarea formControlName="airLineContactAddress" style="position: relative; top: 20px; margin-left: 10px;" ></textarea>
             </div>
             <br>
-            <button type="submit" class="btn btn-info subColor">Submit</button>
+            <button type="submit" class="btn btn-info subColor" [disabled]="addAirlineForm.invalid">Submit</button>
         </form>
     </div>
 </div>

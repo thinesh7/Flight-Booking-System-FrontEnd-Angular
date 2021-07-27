@@ -1,0 +1,16 @@
+<div class="myFormBody">
+    <div class="myformContainer">
+        <form [formGroup]="discountForm" >
+            <h3 *ngIf="discountApplied" style="color: green; font-weight: 800;">Discount Added</h3>
+            <div>
+                <label>Discount Code</label>
+                <input type="text" placeholder="Enter Discount Code" formControlName="discountCode"> 
+            </div>
+            <div>
+                <label>Discount Percentage</label>
+                <input type="number" placeholder="Enter Discount Code" formControlName="discountPercentage" min="0" max="10">
+            </div>
+            <button type="submit" class="btn btn-info subColor" [disabled]="discountForm.invalid" (click)="addDiscount()">Submit</button>
+        </form>
+    </div>
+</div>

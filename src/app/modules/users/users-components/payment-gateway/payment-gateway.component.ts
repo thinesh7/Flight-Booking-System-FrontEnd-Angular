@@ -12,35 +12,36 @@ import { Ticket } from 'src/app/service/ticket';
 export class PaymentGatewayComponent implements OnInit {
 
   //ticket:
-  ticketInfo:any;
-  ticketDeatils:Ticket = new Ticket();
-  tripType:string = '';
+  ticketInfo: any;
+  ticketDeatils: Ticket = new Ticket();
+  tripType: string = '';
 
-  constructor(private tService:Ticket, private router:Router,private fservice:FlightServiceService) { }
+  constructor(private tService: Ticket, private router: Router, private fservice: FlightServiceService) { }
 
   ngOnInit(): void {
     this.initializeFormGroup();
   }
 
-  initializeFormGroup(){    
+  initializeFormGroup() {
     this.ticketDeatils = this.tService;
-    this.ticketInfo = this.tService.ticket;
+    this.ticketInfo = this.ticketDeatils.ticket;
     this.tripType = this.tService.searchDetails.tripType.toUpperCase();
   }
 
-  getPassengerList(){
+  getPassengerList() {
     return this.ticketInfo.passengersList;
   }
 
-  payment(){
+  payment() {
+    this.ticketInfo.ticketStatus = 'Completed';
     this.fservice.sendTicketBookingDetails(this.ticketInfo).subscribe(data => {
       this.fservice.pnrNumber = 'PNR1001236';
       this.navigateToSuccessPage();
     });
   }
 
-  navigateToSuccessPage(){
+  navigateToSuccessPage() {
     this.router.navigate(["/dashboard/success"]);
   }
-  
+
 }

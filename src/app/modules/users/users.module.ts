@@ -17,6 +17,9 @@ import { SearchResultComponent } from './users-components/search-result/search-r
 import { GetUserDetailsComponent } from './users-components/get-user-details/get-user-details.component';
 import { PaymentGatewayComponent } from './users-components/payment-gateway/payment-gateway.component';
 import { PaymentSuccessComponent } from './users-components/payment-success/payment-success.component';
+import { UsersLoginComponent } from './users-components/users-login/users-login.component';
+import { UsersLoginGuard } from 'src/app/guards/users-login.guard';
+import { UserRegisterComponent } from './users-components/user-register/user-register.component';
 
 @NgModule({
   declarations: [
@@ -29,8 +32,11 @@ import { PaymentSuccessComponent } from './users-components/payment-success/paym
     GetUserDetailsComponent,
     PaymentGatewayComponent,
     PaymentSuccessComponent,
+    UsersLoginComponent,
+    UserRegisterComponent,
   ],
   imports: [CommonModule,UsersRoutingModule,ReactiveFormsModule,FormsModule,MatNativeDateModule,MatFormFieldModule,
-    MatInputModule,MatRadioModule,MatSelectModule,MatAutocompleteModule]
+    MatInputModule,MatRadioModule,MatSelectModule,MatAutocompleteModule],
+    providers:[UsersLoginGuard]
 })
 export class UsersModule { }

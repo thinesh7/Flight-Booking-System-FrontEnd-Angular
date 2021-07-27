@@ -24,15 +24,15 @@
         <div class="element">
             Amount to be pay: <span style="color: red; font-size: large;" >{{ticketInfo.billingAmmount}}&nbsp;INR </span>
         </div>
-        <div class="element">
-            <label>Enter Card Details</label>
-            <input type="text" placeholder="XXXX-XXXX-XXXX-XXXX"> <br>
-            <label>Enter CVV</label>
+        <div class="element" style="margin-top: 2px;">
+            <label style="padding-right: 10px;" >Enter Card Details</label>
+            <input type="text" placeholder="XXXX-XXXX-XXXX-XXXX"><br>
+            <label style="padding-right: 10px;" >Enter CVV</label>
             <input type="text" placeholder="XXX">
-            <label>Enter Expire Date</label>
+            <label style="padding-right: 10px; padding-right: 10px;" >Enter Expire Date</label>
             <input type="text" placeholder="MM/YY">
         </div>
         <br>
-        <button type="button" class="btn btn-info subColor" (click)="payment()">Click Here to Pay the Amount {{ticketInfo.billingAmmount}} &nbsp; INR </button>
+        <button type="button" class="btn btn-info subColor" (click)="payment()">Click Here to Pay the Amount {{ticketInfo.billingAmmount}} INR </button>
     </div>
 </div>

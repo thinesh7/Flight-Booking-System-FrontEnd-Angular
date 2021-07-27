@@ -1,0 +1,39 @@
+<div class="myFormBody">
+    <div class="myformContainer">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Airline Name</th>
+                    <th>Flight ID</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Ticket Cost</th>
+                    <th>Depature Date</th>
+                    <th>Depature Time</th>
+                    <th>Arrival Date</th>
+                    <th>Arrival Time</th>
+                    <th>Total Seats</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let flight of ScheduledAllFlightDetails">
+                    <td scope="row">{{flight.airlineName}}</td>
+                    <td>{{flight.flightNumber}}</td>
+                    <td>{{flight.from}}</td>
+                    <td>{{flight.to}}</td>
+                    <td>{{flight.price}}</td>
+                    <td>{{flight.depatureDate}}</td>
+                    <td>{{flight.dTime}}</td>
+                    <td>{{flight.arivalDate}}</td>
+                    <td>{{flight.aTime}}</td>
+                    <td>{{flight.totalSeats}}</td>
+                    <td>
+                        <button>Update</button>
+                        <button style="margin-left: 5px;">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

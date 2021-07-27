@@ -1,5 +1,44 @@
 <div class="myFormBody">
     <div class="myformContainer">
-        <h1>Under Construction</h1>
+
+        <label style="color: red;">On Ward Trip</label>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Airline Name</th>
+                    <th>Flight Number</th>
+                    <th>Boarding Date</th>
+                    <th>Boarding Time</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Number of Passengers</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ticket of ticketHistory; let i=index">
+                    <td>Flight Name</td>
+                    <td>{{ticket.onwardFlightID}}</td>
+                    <td>Boarding date</td>
+                    <td>{{ticket.onwardBoardingTime}}</td>
+                    <td>{{ticket.onwardSource}}</td>
+                    <td>{{ticket.onwardDepature}}</td>
+                    <td>{{ticket.passengersList.length}}</td>
+                    <td><button>Cancel Ticket</button></td>
+                </tr>
+            </tbody>
+            <tbody *ngIf="isRoundTrip">
+                <tr *ngFor="let ticket of ticketHistory; let i=index" style="padding: 5px;">
+                    <td>Flight Name</td>
+                    <td>{{ticket.roundFlightId}}</td>
+                    <td>Boarding date</td>
+                    <td>{{ticket.returnBoardingTime}}</td>
+                    <td>{{ticket.roundSource}}</td>
+                    <td>{{ticket.roundDepature}}</td>
+                    <td>{{ticket.passengersList.length}}</td>
+                    <td><button>Cancel Ticket</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

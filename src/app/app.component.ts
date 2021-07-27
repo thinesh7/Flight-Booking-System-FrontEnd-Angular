@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'Flight-Booking-System-FE';
 
   constructor(private router:Router){
-    this.router.navigate(["users/dashboard/searchFlight"]);
+    this.router.navigate(["users/users-login"]);
   }
 
 }

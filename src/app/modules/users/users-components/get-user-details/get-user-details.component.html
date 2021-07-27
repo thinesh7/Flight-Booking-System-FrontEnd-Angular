@@ -67,10 +67,17 @@
                     Total Price:
                     &nbsp; {{this.getDetailsForm.value.billingAmmount}} INR
                 </p>
+
                 <div style="margin-top: 10px;">
                     <label>Discount</label>
-                    <input type="text" formControlName="discount" #discount>
-                    <button type="button" class="btn btn-info subColor" style="margin-left:30px px; margin-bottom: 2px;">Apply</button>
+                    <input type="text" formControlName="discount">
+                    <button type="button" [disabled]="!getDetailsForm.controls.discount.value"
+                        class="btn btn-info subColor" (click)="applyDiscount()"
+                        style="margin-left:30px px; margin-bottom: 2px;" *ngIf="!isDiscountApplied">Apply</button>
+                    <div *ngIf="discountValidation">
+                        <h3 style="color:rgb(60, 128, 60); font-size: large;" *ngIf="isDiscountApplied">Discount Applied</h3>
+                        <h3 style="color:red; font-size: large;" *ngIf="!isDiscountApplied">Incorrect Code</h3>
+                    </div>
                 </div>
             </div>
             <button type="submit" class="btn btn-info subColor">Check Out</button>

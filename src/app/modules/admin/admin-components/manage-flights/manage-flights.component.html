@@ -1,0 +1,49 @@
+<div class="myFormBody">
+    <div class="myformContainer">
+        <h2 *ngIf="isAdded" style="color: green; font-size: larger;">Flight Scheduled</h2>
+        <form [formGroup]="flightManageForm">
+            <div>
+                <label>Airline Name</label>
+                <input type="text" formControlName="airlineName" placeholder="Enter AirLine Name">
+            </div>
+            <div>
+                <label>Flight Number</label>
+                <input type="text" formControlName="flightNumber" placeholder="Enter Flight Number">
+            </div>
+            <div>
+                <label>From</label>
+                <input type="text" formControlName="from" placeholder="Enter Source Place">
+            </div>
+            <div>
+                <label>To</label>
+                <input type="text" formControlName="to" placeholder="Enter Destination Place">
+            </div>
+            <div>
+                <label>Ticket Cost</label>
+                <input type="text" formControlName="price" placeholder="Enter Price">
+            </div>
+            <div>
+                <label>Depature Date</label>
+                <input type="date" formControlName="arivalDate" placeholder="Enter Depature Date">
+            </div>
+            <div>
+                <label>Depature Time</label>
+                <input type="text" formControlName="dTime" placeholder="Enter Depature Time">
+            </div>
+            <div>
+                <label>Arrival Date</label>
+                <input type="date" formControlName="depatureDate" placeholder="Enter Arrival Date">
+            </div>
+            <div>
+                <label>Arrival Time</label>
+                <input type="text" formControlName="aTime" placeholder="Enter Arrival Time">
+            </div>
+            <div>
+                <label>Total Seats</label>
+                <input type="number" required="required" min="20" max="100" formControlName="totalSeats" placeholder="Enter Total Seat Numbers">
+            </div>
+            <button type="submit" class="btn btn-info subColor" [disabled]="flightManageForm.invalid"
+                (click)="manageFlight()">Submit</button>
+        </form>
+    </div>
+</div>

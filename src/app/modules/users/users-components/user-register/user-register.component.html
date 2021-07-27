@@ -1,0 +1,25 @@
+<div class="myFormBody">
+    <div class="myformContainer">
+
+        <h4 style="color: green;" *ngIf="isRegistered">User Registered Successfully</h4>
+        <form [formGroup]="userRegisterForm" (ngSubmit)="registerNewUser()">
+            <div>
+                <label>Name:</label>
+                <input type="text" formControlName="name">
+            </div>
+            <div>
+                <label>Age:</label>
+                <input type="number" required="required" max="100" min="2" formControlName="age">
+            </div>
+            <div>
+                <label>Email Id:</label>
+                <input type="email" formControlName="emailId">
+            </div>
+            <div>
+                <label>Password:</label>
+                <input type="password" formControlName="password">
+            </div>
+            <button type="submit" class="btn btn-info subColor" [disabled]="userRegisterForm.invalid">Register</button>
+        </form>
+    </div>
+</div>
